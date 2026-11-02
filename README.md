@@ -51,3 +51,16 @@ Detail: [`TURNSTILE_BREAK_2026_11_02.md`](TURNSTILE_BREAK_2026_11_02.md).
   pre-clearance configuration.
 - This is a **"good" design** in the good-vs-bad framing: no forgeable client
   proof — the client is a shuttle, the decision is server-side.
+
+## Wire / tamper / mint (what can we actually do?)
+
+- **See the wire?** No plaintext payload — the challenge runs inside Cloudflare's
+  proprietary `/cdn-cgi/challenge-platform/…` frame; the only client-visible
+  artefact is the opaque token. Nothing to read.
+- **Tamper?** The token is an opaque server-checked value; there is no client
+  field you can flip to influence the verdict.
+- **Mint?** We called **Siteverify** with Cloudflare's **public test secret**:
+  any token (even garbage) returns `success:true` with
+  `metadata.result_with_testing_key:true` — the *test* key is permissive by
+  design. **Production tokens are server-validated, single-use, 300 s TTL,
+  secret-gated → not mintable** (`artifacts/siteverify-boundary.json`).

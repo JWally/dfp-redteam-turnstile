@@ -1,0 +1,8 @@
+{
+  "note": "Siteverify called with Cloudflare's PUBLIC test secret (docs). The test secret is permissive by design.",
+  "always_pass_secret + dummy_token": {"success": true, "metadata": {"result_with_testing_key": true}},
+  "always_pass_secret + TAMPERED_garbage_token": {"success": true, "metadata": {"result_with_testing_key": true}},
+  "always_pass_secret + replayed_token(x2)": {"success": true, "note": "no single-use enforcement under the test key"},
+  "block/interactive_test_secrets": {"success": false, "error-codes": ["invalid-input-secret"]},
+  "conclusion": "Under the public TEST key any token passes (result_with_testing_key). Production keys validate content, enforce single-use + 300s TTL server-side; the client cannot mint a production token."
+}
