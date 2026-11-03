@@ -27,7 +27,8 @@ Detail: [`TURNSTILE_BREAK_2026_11_02.md`](TURNSTILE_BREAK_2026_11_02.md).
 - 🔴 Mint/forge token: **server-side, single-use, secret-gated** — not forgeable
   from the client
 - ⚪ Bypass (out of scope here): a **patched real browser** solves it legitimately
-  (public `Theyka/Turnstile-Solver` / patchright reads `[name=cf-turnstile-response]`)
+  (public [`Theyka/Turnstile-Solver`](https://github.com/Theyka/Turnstile-Solver) /
+  patchright reads `[name=cf-turnstile-response]`)
 
 ## Recorded demo
 

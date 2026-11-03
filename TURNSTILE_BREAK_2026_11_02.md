@@ -52,11 +52,11 @@ per request. Results are posted back to the parent via `postMessage`.
 ## 5. How it is actually bypassed (not by forging)
 
 The known working approach is to **legitimately solve** the challenge in a real
-(patched) browser. The public `Theyka/Turnstile-Solver` uses **patchright**
-(a patched Playwright): it loads the widget on a page and reads
-`[name=cf-turnstile-response]` after the challenge passes. There is no crypto
-to break — the "attack" is browser automation, and the outcome is a genuine
-single-use token.
+(patched) browser. The public [`Theyka/Turnstile-Solver`](https://github.com/Theyka/Turnstile-Solver)
+uses **patchright** (a patched Playwright): it loads the widget on a page and
+reads `[name=cf-turnstile-response]` after the challenge passes. There is no
+crypto to break — the "attack" is browser automation, and the outcome is a
+genuine single-use token.
 
 ## 6. Assessment
 
